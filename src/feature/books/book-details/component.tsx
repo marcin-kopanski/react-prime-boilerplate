@@ -1,13 +1,12 @@
+import { Book } from "@/models";
+import { bookByIdLoader, bookByIdQuery } from "@/models/book/query-client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { FC } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import { Book } from "src/models";
-import { bookByIdLoader, bookByIdQuery } from "src/models/book/query-client";
 
-export const BookDetails: FC<{}> = () => {
+export const BookDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams() as { id: string };
 

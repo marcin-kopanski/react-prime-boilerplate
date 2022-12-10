@@ -1,5 +1,5 @@
+import { axiosInstance } from "@/services";
 import { AxiosResponse } from "axios";
-import { axiosInstance } from "../../services";
 import { Book } from "./model";
 
 const responseBody = (response: AxiosResponse) => response.data;

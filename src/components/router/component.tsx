@@ -1,9 +1,8 @@
-import { FC } from "react";
+import { BookDetails } from "@/feature/books/book-details";
+import { BooksList } from "@/feature/books/books-list";
+import { allBooksLoader, bookByIdLoader } from "@/models/book/query-client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { BookDetails } from "src/feature/books/book-details";
-import { BooksList } from "src/feature/books/books-list";
-import { allBooksLoader, bookByIdLoader } from "src/models/book/query-client";
-import { queryClient } from "src/services/query-client-service";
+import { queryClient } from "@/services";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +27,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const Router: FC<{}> = () => {
+export const Router = () => {
   return <RouterProvider router={router} />;
 };

@@ -1,7 +1,7 @@
+import { allBooksLoader, allBooksQuery } from "@/models/book/query-client";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { allBooksLoader, allBooksQuery } from "src/models/book/query-client";
 
 type BooksListProps = {};
 
