@@ -14,7 +14,7 @@ const yearRequests = {
 };
 
 export const YearsClient = {
-  createYear: (body: Year) => yearRequests.post(YEARS_URL_API, body).then(responseBody),
+  createYear: (body: Year) => yearRequests.post(YEARS_URL_API, body),
   findAllYears: (): Promise<Year[]> => yearRequests.get(YEARS_URL_API),
   findYearById: (id: number): Promise<Year> => yearRequests.get(`${YEARS_URL_API}/${id}`),
   updateYear: (id: number, body: Year): Promise<Year> =>

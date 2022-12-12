@@ -8,6 +8,7 @@ import { AuthorsList } from "@/feature/dicts/authors";
 import { CountriesList } from "@/feature/dicts/countries";
 import { GenresList } from "@/feature/dicts/genres";
 import { YearsList } from "@/feature/dicts";
+import { loaderAllYears, loaderYearById } from "@/models/year/loader-client";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,19 @@ const router = createBrowserRouter([
       },
       {
         path: "years",
-        element: <YearsList />,
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <YearsList />,
+            loader: loaderAllYears(queryClient),
+          },
+          {
+            path: ":id",
+            element: <p>details</p>,
+            loader: loaderYearById(queryClient),
+          },
+        ],
       },
     ],
   },

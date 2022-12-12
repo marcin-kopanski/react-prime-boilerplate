@@ -1,3 +1,7 @@
+import { useYearsLoaderData } from "./loader-data-hook";
+import { YearsTable } from "./table";
+
 export const YearsList = () => {
-  return <p>Years</p>;
+  const { data, isLoading } = useYearsLoaderData();
+  return <YearsTable data={data} isLoading={isLoading} />;
 };
