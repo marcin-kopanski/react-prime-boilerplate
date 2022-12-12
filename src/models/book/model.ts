@@ -1,6 +1,10 @@
+import { Author } from "../author";
+import { Genre } from "../genre";
+
 export type Book = {
-  id?: string;
+  id?: number;
   title: string;
-  author: string;
+  author: Author;
   releaseDate: string;
+  genre: Genre;
 };
