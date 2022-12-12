@@ -1,9 +1,35 @@
-import { Outlet } from "react-router-dom";
+import { useMemo } from "react";
+import { Menubar } from "primereact/menubar";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export const Dictionaries = () => {
+  const navigate = useNavigate();
+
+  const menuItems = useMemo(
+    () => [
+      {
+        label: "Authors",
+        command: () => navigate("/dicts/authors"),
+      },
+      {
+        label: "Countries",
+        command: () => navigate("/dicts/countries"),
+      },
+      {
+        label: "Genres",
+        command: () => navigate("/dicts/genres"),
+      },
+      {
+        label: "Years",
+        command: () => navigate("/dicts/years"),
+      },
+    ],
+    [],
+  );
+
   return (
     <>
-      <p>dictionaries</p>
+      <Menubar model={menuItems} />
       <Outlet />
     </>
   );

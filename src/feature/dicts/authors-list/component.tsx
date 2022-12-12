@@ -1,3 +1,7 @@
+import { useAuthorsLoaderData } from "./loader-data-hook";
+import { AuthorsTable } from "./table";
+
 export const AuthorsList = () => {
-  return <p>Authors</p>;
+  const { data, isLoading } = useAuthorsLoaderData();
+  return <AuthorsTable data={data} isLoading={isLoading} />;
 };

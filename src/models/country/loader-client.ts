@@ -1,18 +1,18 @@
 import { QueryClient } from "@tanstack/react-query";
 import { LoaderFunction } from "react-router-dom";
-import { Genre } from "./model";
-import { QueryGenres } from "./query-client";
+import { Country } from "./model";
+import { QueryCountries } from "./query-client";
 
-const loaderAllGenres = (queryClient: QueryClient) => async (): Promise<Genre[]> => {
-  const query = QueryGenres.queryAllGenres();
+const loaderAllCountries = (queryClient: QueryClient) => async (): Promise<Country[]> => {
+  const query = QueryCountries.queryAllCountries();
   return queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query));
 };
 
-const loaderGenreById =
+const loaderCountryById =
   (queryClient: QueryClient): LoaderFunction =>
-  async ({ params: { id } }): Promise<Genre> => {
+  async ({ params: { id } }): Promise<Country> => {
     if (!!id) {
-      const query = QueryGenres.queryGenreById(+id);
+      const query = QueryCountries.queryCountryById(+id);
       return (
         queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query))
       );
@@ -20,7 +20,7 @@ const loaderGenreById =
     return Promise.reject();
   };
 
-export const LoaderGenres = {
-  loaderAllGenres,
-  loaderGenreById,
+export const LoaderCountries = {
+  loaderAllCountries,
+  loaderCountryById,
 };

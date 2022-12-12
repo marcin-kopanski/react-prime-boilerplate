@@ -1,19 +1,19 @@
-import { Year } from "@/models/year";
+import { Author } from "@/models/author";
 import { Button } from "primereact/button";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-type YearsTableProps = {
+type AuthorsTableProps = {
   isLoading: boolean;
-  data: Year[];
+  data: Author[];
 };
 
-export const YearsTable: FC<YearsTableProps> = (props) => {
+export const AuthorsTable: FC<AuthorsTableProps> = (props) => {
   const navigate = useNavigate();
 
-  const actionBodyTemplate = (data: Year) => {
+  const actionBodyTemplate = (data: Author) => {
     return (
       <Button
         type="button"
@@ -31,8 +31,12 @@ export const YearsTable: FC<YearsTableProps> = (props) => {
         headerStyle={{ width: "5rem", textAlign: "center" }}
         bodyStyle={{ textAlign: "center" }}
       />
-      <Column field="id" header="Id" headerStyle={{ width: "5rem" }} />
-      <Column field="year" header="Year" />
+      <Column field="id" header="Id" />
+      <Column field="firstName" header="First Name" />
+      <Column field="lastName" header="Last Name" />
+      <Column field="dateOfBirth" header="Date of Birth" />
+      <Column field="dateOfDeath" header="Date of Death" />
+      <Column field="country.name" header="Country" />
     </DataTable>
   );
 };

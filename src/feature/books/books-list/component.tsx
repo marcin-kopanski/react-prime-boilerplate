@@ -1,4 +1,5 @@
-import { allBooksLoader, allBooksQuery } from "@/models/book/query-client";
+import { LoaderBooks } from "@/models/book/loader-client";
+import { QueryBooks } from "@/models/book/query-client";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -7,9 +8,11 @@ type BooksListProps = {};
 
 export const BooksList: FC<BooksListProps> = (props) => {
   const navigate = useNavigate();
-  const initialData = useLoaderData() as Awaited<ReturnType<ReturnType<typeof allBooksLoader>>>;
+  const initialData = useLoaderData() as Awaited<
+    ReturnType<ReturnType<typeof LoaderBooks.loaderAllBooks>>
+  >;
 
-  const { data: books, isLoading } = useQuery({ ...allBooksQuery(), initialData });
+  const { data: books, isLoading } = useQuery({ ...QueryBooks.queryAllBooks(), initialData });
 
   return (
     <div>

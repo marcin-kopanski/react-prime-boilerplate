@@ -2,40 +2,22 @@ import { axiosInstance } from "@/services";
 import { AxiosResponse } from "axios";
 import { Book } from "./model";
 
+const BOOKS_URL_API = "dicts/books";
+
 const responseBody = (response: AxiosResponse) => response.data;
 
-const bookRequests = {
+const BookRequests = {
   get: (url: string) => axiosInstance.get<Book[]>(url).then(responseBody),
+  post: (url: string, body: Book) => axiosInstance.post<Book>(url, body).then(responseBody),
+  patch: (url: string, body: Book) => axiosInstance.patch<Book>(url, body).then(responseBody),
+  delete: (url: string) => axiosInstance.delete<Book>(url).then(responseBody),
 };
 
 export const BooksClient = {
-  getAllBooks: (): Promise<Book[]> => bookRequests.get("books"),
-  getSingleBook: (id: number): Promise<Book> => bookRequests.get(`books/${id}`),
+  createBook: (body: Book) => BookRequests.post(BOOKS_URL_API, body),
+  findAllBooks: (): Promise<Book[]> => BookRequests.get(BOOKS_URL_API),
+  findBookById: (id: number): Promise<Book> => BookRequests.get(`${BOOKS_URL_API}/${id}`),
+  updateBook: (id: number, body: Book): Promise<Book> =>
+    BookRequests.patch(`${BOOKS_URL_API}/${id}`, body),
+  removeBook: (id: number): Promise<Book> => BookRequests.delete(`${BOOKS_URL_API}/${id}`),
 };
-
-// interface Book {
-//   isbn : string;
-//   name : string;
-//   price : number;
-//   author : string;
-// }
-
-// const instance = axios.create({
-//   baseURL: 'https://ecom-backend-example/api/v1',
-//   timeout: 15000,
-// });
-
-// const responseBody = (response: AxiosResponse) => response.data;
-
-// const bookRequests = {
-//   get: (url: string) => instance.get<Book>(url).then(responseBody),
-//   post: (url: string, body: Book) => instance.post<Book>(url, body).then(responseBody),
-//   delete: (url: string) => instance.delete<Book>(url).then(responseBody),
-// };
-
-// export const Books {
-//   getBooks : () : Promise<Book[]> => bookRequests.get('/books'),
-//   getSingleBook : (isbn : string) : Promise<Book> => bookRequests.get(`/books/${isbn}`),
-//   addBook : (book : Book) : Promise<Book> => bookRequests.post(`/books`, book),
-//   deleteBook : (isbn : string) : Promise<Book> => bookRequests.delete(`/books/${isbn}`)
-// }

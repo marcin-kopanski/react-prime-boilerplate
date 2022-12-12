@@ -1,19 +1,19 @@
-import { Year } from "@/models/year";
+import { Country } from "@/models/country";
 import { Button } from "primereact/button";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-type YearsTableProps = {
+type CountriesTableProps = {
   isLoading: boolean;
-  data: Year[];
+  data: Country[];
 };
 
-export const YearsTable: FC<YearsTableProps> = (props) => {
+export const CountriesTable: FC<CountriesTableProps> = (props) => {
   const navigate = useNavigate();
 
-  const actionBodyTemplate = (data: Year) => {
+  const actionBodyTemplate = (data: Country) => {
     return (
       <Button
         type="button"
@@ -32,7 +32,7 @@ export const YearsTable: FC<YearsTableProps> = (props) => {
         bodyStyle={{ textAlign: "center" }}
       />
       <Column field="id" header="Id" headerStyle={{ width: "5rem" }} />
-      <Column field="year" header="Year" />
+      <Column field="name" header="Name" />
     </DataTable>
   );
 };

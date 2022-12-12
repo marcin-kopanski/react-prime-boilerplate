@@ -1,5 +1,6 @@
 import { Book } from "@/models";
-import { bookByIdLoader, bookByIdQuery } from "@/models/book/query-client";
+import { LoaderBooks } from "@/models/book/loader-client";
+import { QueryBooks } from "@/models/book/query-client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
@@ -10,8 +11,10 @@ export const BookDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams() as { id: string };
 
-  const initialData = useLoaderData() as Awaited<ReturnType<ReturnType<typeof bookByIdLoader>>>;
-  const { data: book, isLoading } = useQuery({ ...bookByIdQuery(+id), initialData });
+  const initialData = useLoaderData() as Awaited<
+    ReturnType<ReturnType<typeof LoaderBooks.loaderBookById>>
+  >;
+  const { data: book, isLoading } = useQuery({ ...QueryBooks.queryBookById(+id), initialData });
   const { register, control, handleSubmit, watch, formState } = useForm<Book>({
     defaultValues: {
       ...book,
@@ -27,7 +30,7 @@ export const BookDetails = () => {
 
   return (
     <div>
-      <p>{`"${book.title}" by ${book.author}`}</p>
+      <p>{`"${book?.title}" by ${book?.author}`}</p>
 
       <form onSubmit={onSubmitHandler}>
         <Controller

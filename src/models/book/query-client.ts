@@ -1,31 +1,19 @@
-import { QueryClient } from "@tanstack/react-query";
-import { LoaderFunction, LoaderFunctionArgs, Params } from "react-router-dom";
+import { UseQueryOptions } from "@tanstack/react-query";
 import { BooksClient } from "./client";
 import { Book } from "./model";
 import { BooksKeys } from "./query-key-factory";
 
-export const allBooksQuery = () => ({
-  queryKey: BooksKeys.all,
-  queryFn: async () => BooksClient.getAllBooks(),
-  staleTime: 0,
+const queryAllBooks = (): UseQueryOptions<Book[]> => ({
+  queryKey: BooksKeys.list(),
+  queryFn: async () => BooksClient.findAllBooks(),
 });
 
-export const allBooksLoader = (queryClient: QueryClient) => async (): Promise<Book[]> => {
-  const query = allBooksQuery();
-  return queryClient.getQueryData(query.queryKey) ?? (await queryClient.fetchQuery(query));
-};
-
-export const bookByIdQuery = (id: number) => ({
+const queryBookById = (id: number): UseQueryOptions<Book> => ({
   queryKey: BooksKeys.detailsById(id),
-  queryFn: async () => BooksClient.getSingleBook(id),
+  queryFn: async () => BooksClient.findBookById(id),
 });
 
-export const bookByIdLoader =
-  (queryClient: QueryClient) =>
-  async ({ params }: LoaderFunctionArgs): Promise<Book> => {
-    if (params.id) {
-      const query = bookByIdQuery(+params.id);
-      return queryClient.getQueryData(query.queryKey) ?? (await queryClient.fetchQuery(query));
-    }
-    return Promise.reject();
-  };
+export const QueryBooks = {
+  queryAllBooks,
+  queryBookById,
+};

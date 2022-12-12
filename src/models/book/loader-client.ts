@@ -1,18 +1,18 @@
 import { QueryClient } from "@tanstack/react-query";
 import { LoaderFunction } from "react-router-dom";
-import { Genre } from "./model";
-import { QueryGenres } from "./query-client";
+import { Book } from "./model";
+import { QueryBooks } from "./query-client";
 
-const loaderAllGenres = (queryClient: QueryClient) => async (): Promise<Genre[]> => {
-  const query = QueryGenres.queryAllGenres();
+const loaderAllBooks = (queryClient: QueryClient) => async (): Promise<Book[]> => {
+  const query = QueryBooks.queryAllBooks();
   return queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query));
 };
 
-const loaderGenreById =
+const loaderBookById =
   (queryClient: QueryClient): LoaderFunction =>
-  async ({ params: { id } }): Promise<Genre> => {
+  async ({ params: { id } }): Promise<Book> => {
     if (!!id) {
-      const query = QueryGenres.queryGenreById(+id);
+      const query = QueryBooks.queryBookById(+id);
       return (
         queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query))
       );
@@ -20,7 +20,7 @@ const loaderGenreById =
     return Promise.reject();
   };
 
-export const LoaderGenres = {
-  loaderAllGenres,
-  loaderGenreById,
+export const LoaderBooks = {
+  loaderAllBooks,
+  loaderBookById,
 };

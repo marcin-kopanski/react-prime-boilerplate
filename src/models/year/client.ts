@@ -6,7 +6,7 @@ const YEARS_URL_API = "dicts/years";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
-const yearRequests = {
+const YearRequests = {
   get: (url: string) => axiosInstance.get<Year[]>(url).then(responseBody),
   post: (url: string, body: Year) => axiosInstance.post<Year>(url, body).then(responseBody),
   patch: (url: string, body: Year) => axiosInstance.patch<Year>(url, body).then(responseBody),
@@ -14,10 +14,10 @@ const yearRequests = {
 };
 
 export const YearsClient = {
-  createYear: (body: Year) => yearRequests.post(YEARS_URL_API, body),
-  findAllYears: (): Promise<Year[]> => yearRequests.get(YEARS_URL_API),
-  findYearById: (id: number): Promise<Year> => yearRequests.get(`${YEARS_URL_API}/${id}`),
+  createYear: (body: Year) => YearRequests.post(YEARS_URL_API, body),
+  findAllYears: (): Promise<Year[]> => YearRequests.get(YEARS_URL_API),
+  findYearById: (id: number): Promise<Year> => YearRequests.get(`${YEARS_URL_API}/${id}`),
   updateYear: (id: number, body: Year): Promise<Year> =>
-    yearRequests.patch(`${YEARS_URL_API}/${id}`, body),
-  removeYear: (id: number): Promise<Year> => yearRequests.delete(`${YEARS_URL_API}/${id}`),
+    YearRequests.patch(`${YEARS_URL_API}/${id}`, body),
+  removeYear: (id: number): Promise<Year> => YearRequests.delete(`${YEARS_URL_API}/${id}`),
 };

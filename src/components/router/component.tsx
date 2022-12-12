@@ -1,6 +1,5 @@
 import { BookDetails } from "@/feature/books/book-details";
 import { BooksList } from "@/feature/books/books-list";
-import { allBooksLoader, bookByIdLoader } from "@/models/book/query-client";
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
 import { queryClient } from "@/services";
 import { LoaderYears } from "@/models/year/loader-client";
@@ -12,6 +11,11 @@ import { GenresList } from "@/feature/dicts/genres-list";
 import { GenreDetails } from "@/feature/dicts/genre-details";
 import { YearsList } from "@/feature/dicts/years-list";
 import { YearDetails } from "@/feature/dicts/year-details";
+import { LoaderBooks } from "@/models/book/loader-client";
+import { LoaderAuthors } from "@/models/author";
+import { AuthorDetails } from "@/feature/dicts/author-details";
+import { LoaderCountries } from "@/models/country";
+import { CountryDetails } from "@/feature/dicts/country-details";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +29,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <BooksList />,
-        loader: allBooksLoader(queryClient),
+        loader: LoaderBooks.loaderAllBooks(queryClient),
       },
       {
         path: ":id",
         element: <BookDetails />,
-        loader: bookByIdLoader(queryClient),
+        loader: LoaderBooks.loaderBookById(queryClient),
       },
     ],
   },
@@ -44,11 +48,35 @@ const router = createBrowserRouter([
       },
       {
         path: "authors",
-        element: <AuthorsList />,
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <AuthorsList />,
+            loader: LoaderAuthors.loaderAllAuthors(queryClient),
+          },
+          {
+            path: ":id",
+            element: <AuthorDetails />,
+            loader: LoaderAuthors.loaderAuthorById(queryClient),
+          },
+        ],
       },
       {
         path: "countries",
-        element: <CountriesList />,
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <CountriesList />,
+            loader: LoaderCountries.loaderAllCountries(queryClient),
+          },
+          {
+            path: ":id",
+            element: <CountryDetails />,
+            loader: LoaderCountries.loaderCountryById(queryClient),
+          },
+        ],
       },
       {
         path: "genres",

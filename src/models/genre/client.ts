@@ -6,7 +6,7 @@ const GENRES_URL_API = "dicts/genres";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
-const genreRequests = {
+const GenreRequests = {
   get: (url: string) => axiosInstance.get<Genre[]>(url).then(responseBody),
   post: (url: string, body: Genre) => axiosInstance.post<Genre>(url, body).then(responseBody),
   patch: (url: string, body: Genre) => axiosInstance.patch<Genre>(url, body).then(responseBody),
@@ -14,10 +14,10 @@ const genreRequests = {
 };
 
 export const GenresClient = {
-  createGenre: (body: Genre) => genreRequests.post(GENRES_URL_API, body),
-  findAllGenres: (): Promise<Genre[]> => genreRequests.get(GENRES_URL_API),
-  findGenreById: (id: number): Promise<Genre> => genreRequests.get(`${GENRES_URL_API}/${id}`),
+  createGenre: (body: Genre) => GenreRequests.post(GENRES_URL_API, body),
+  findAllGenres: (): Promise<Genre[]> => GenreRequests.get(GENRES_URL_API),
+  findGenreById: (id: number): Promise<Genre> => GenreRequests.get(`${GENRES_URL_API}/${id}`),
   updateGenre: (id: number, body: Genre): Promise<Genre> =>
-    genreRequests.patch(`${GENRES_URL_API}/${id}`, body),
-  removeGenre: (id: number): Promise<Genre> => genreRequests.delete(`${GENRES_URL_API}/${id}`),
+    GenreRequests.patch(`${GENRES_URL_API}/${id}`, body),
+  removeGenre: (id: number): Promise<Genre> => GenreRequests.delete(`${GENRES_URL_API}/${id}`),
 };
