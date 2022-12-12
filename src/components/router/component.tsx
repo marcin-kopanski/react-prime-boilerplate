@@ -3,15 +3,15 @@ import { BooksList } from "@/feature/books/books-list";
 import { allBooksLoader, bookByIdLoader } from "@/models/book/query-client";
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
 import { queryClient } from "@/services";
-import { Dictionaries } from "@/feature/dicts/component";
-import { AuthorsList } from "@/feature/dicts/authors";
-import { CountriesList } from "@/feature/dicts/countries";
-import { GenresList } from "@/feature/dicts/genres";
-import { YearsList } from "@/feature/dicts";
 import { LoaderYears } from "@/models/year/loader-client";
-import { YearDetails } from "@/feature/dicts/years/details";
-import { GenreDetails } from "@/feature/dicts/genres/details";
 import { LoaderGenres } from "@/models/genre";
+import { Dictionaries } from "@/feature/dicts/dicts-outlet";
+import { AuthorsList } from "@/feature/dicts/authors-list";
+import { CountriesList } from "@/feature/dicts/countries-list";
+import { GenresList } from "@/feature/dicts/genres-list";
+import { GenreDetails } from "@/feature/dicts/genre-details";
+import { YearsList } from "@/feature/dicts/years-list";
+import { YearDetails } from "@/feature/dicts/year-details";
 
 const router = createBrowserRouter([
   {
