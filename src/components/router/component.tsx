@@ -8,7 +8,10 @@ import { AuthorsList } from "@/feature/dicts/authors";
 import { CountriesList } from "@/feature/dicts/countries";
 import { GenresList } from "@/feature/dicts/genres";
 import { YearsList } from "@/feature/dicts";
-import { loaderAllYears, loaderYearById } from "@/models/year/loader-client";
+import { LoaderYears } from "@/models/year/loader-client";
+import { YearDetails } from "@/feature/dicts/years/details";
+import { GenreDetails } from "@/feature/dicts/genres/details";
+import { LoaderGenres } from "@/models/genre";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +52,19 @@ const router = createBrowserRouter([
       },
       {
         path: "genres",
-        element: <GenresList />,
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <GenresList />,
+            loader: LoaderGenres.loaderAllGenres(queryClient),
+          },
+          {
+            path: ":id",
+            element: <GenreDetails />,
+            loader: LoaderGenres.loaderGenreById(queryClient),
+          },
+        ],
       },
       {
         path: "years",
@@ -58,12 +73,12 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <YearsList />,
-            loader: loaderAllYears(queryClient),
+            loader: LoaderYears.loaderAllYears(queryClient),
           },
           {
             path: ":id",
-            element: <p>details</p>,
-            loader: loaderYearById(queryClient),
+            element: <YearDetails />,
+            loader: LoaderYears.loaderYearById(queryClient),
           },
         ],
       },

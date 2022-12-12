@@ -1,3 +1,7 @@
+import { useGenresLoaderData } from "./loader-data-hook";
+import { GenresTable } from "./table";
+
 export const GenresList = () => {
-  return <p>Genres</p>;
+  const { data, isLoading } = useGenresLoaderData();
+  return <GenresTable data={data} isLoading={isLoading} />;
 };

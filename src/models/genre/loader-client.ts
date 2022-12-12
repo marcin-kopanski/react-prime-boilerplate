@@ -1,18 +1,18 @@
 import { QueryClient } from "@tanstack/react-query";
 import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
-import { Year } from "./model";
-import { QueryYears } from "./query-client";
+import { Genre } from "./model";
+import { QueryGenres } from "./query-client";
 
-const loaderAllYears = (queryClient: QueryClient) => async (): Promise<Year[]> => {
-  const query = QueryYears.queryAllYears();
+const loaderAllGenres = (queryClient: QueryClient) => async (): Promise<Genre[]> => {
+  const query = QueryGenres.queryAllGenres();
   return queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query));
 };
 
-const loaderYearById =
+const loaderGenreById =
   (queryClient: QueryClient): LoaderFunction =>
-  async ({ params: { id } }): Promise<Year> => {
+  async ({ params: { id } }): Promise<Genre> => {
     if (!!id) {
-      const query = QueryYears.queryYearById(+id);
+      const query = QueryGenres.queryGenreById(+id);
       return (
         queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query))
       );
@@ -20,7 +20,7 @@ const loaderYearById =
     return Promise.reject();
   };
 
-export const LoaderYears = {
-  loaderAllYears,
-  loaderYearById,
+export const LoaderGenres = {
+  loaderAllGenres,
+  loaderGenreById,
 };
