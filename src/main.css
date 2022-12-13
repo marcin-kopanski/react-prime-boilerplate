@@ -2,3 +2,7 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.p-toolbar {
+  padding: 0.5rem !important;
+}
