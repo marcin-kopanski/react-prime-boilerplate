@@ -20,7 +20,7 @@ export const AuthorsTable: FC<AuthorsTableProps> = (props) => {
         icon="pi pi-search"
         className="p-button-sm p-button-rounded p-button-text p-button-secondary"
         onClick={() => navigate(`${data.id}`)}
-      ></Button>
+      />
     );
   };
 

@@ -20,7 +20,7 @@ export const GenresTable: FC<GenresTableProps> = (props) => {
         icon="pi pi-search"
         className="p-button-sm p-button-rounded p-button-text p-button-secondary"
         onClick={() => navigate(`${data.id}`)}
-      ></Button>
+      />
     );
   };
   return (
