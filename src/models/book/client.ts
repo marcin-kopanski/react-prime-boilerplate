@@ -2,7 +2,7 @@ import { axiosInstance } from "@/services";
 import { AxiosResponse } from "axios";
 import { Book } from "./model";
 
-const BOOKS_URL_API = "dicts/books";
+const BOOKS_URL_API = "books";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
