@@ -24,7 +24,11 @@ export const GenresTable: FC<GenresTableProps> = (props) => {
     );
   };
   return (
-    <DataTable value={props.data}>
+    <DataTable
+      value={props.data}
+      className="with-details-button"
+      tableClassName="border-1 surface-border border-round"
+    >
       <Column
         body={actionBodyTemplate}
         headerStyle={{ width: "5rem", textAlign: "center" }}

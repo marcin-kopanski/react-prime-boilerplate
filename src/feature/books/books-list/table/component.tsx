@@ -25,7 +25,11 @@ export const BooksTable: FC<BooksTableProps> = (props) => {
   };
 
   return (
-    <DataTable value={props.data} className="with-details-button">
+    <DataTable
+      value={props.data}
+      className="with-details-button"
+      tableClassName="border-1 surface-border border-round"
+    >
       <Column
         body={actionBodyTemplate}
         headerStyle={{ width: "5rem", textAlign: "center" }}
