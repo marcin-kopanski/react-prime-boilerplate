@@ -1,27 +1,65 @@
 import { MultiSelect } from "primereact/multiselect";
-import { useEffect, useState } from "react";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { FC, useEffect, useState } from "react";
+import { GeneralFilterElement } from "./model";
 
-const cities = [
-  { name: "New York", code: "NY" },
-  { name: "Rome", code: "RM" },
-  { name: "London", code: "LDN" },
-  { name: "Istanbul", code: "IST" },
-  { name: "Paris", code: "PRS" },
-];
+export type SpecificFilterProps = {
+  filterInitialized: () => void;
+};
 
-export const GeneralFilter = () => {
-  const [selectedCities1, setSelectedCities1] = useState([]);
+type GeneralFilterProps = {
+  filterName: string;
+  isLoading: boolean;
+  placeholder: string;
+  data: GeneralFilterElement[];
+  filterInitialized: () => void;
+};
+
+export const GeneralFilter: FC<GeneralFilterProps> = ({
+  filterName,
+  isLoading,
+  placeholder,
+  data,
+  filterInitialized,
+}) => {
+  const [selectedElements, setSelectedElements] = useState<string[]>();
+
+  useEffect(() => {
+    console.log(filterName, isLoading);
+    if (!isLoading) {
+      setSelectedElements(data.map((element) => element.value));
+      console.log(filterName, "all elements selected");
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (!isLoading && selectedElements?.length === data.length) {
+      console.log(filterName, "selectedElements", selectedElements);
+      filterInitialized();
+    }
+  }, [isLoading, selectedElements]);
 
   return (
-    <MultiSelect
-      className="mr-2"
-      value={selectedCities1}
-      options={cities}
-      onChange={(e) => setSelectedCities1(e.value)}
-      optionLabel="name"
-      placeholder="Select a City"
-      maxSelectedLabels={0}
-      selectedItemsLabel={`Selected {0} of ${cities.length}`}
-    />
+    <>
+      {isLoading && (
+        <ProgressSpinner
+          style={{ width: "50px", height: "50px" }}
+          strokeWidth="8"
+          fill="var(--surface-ground)"
+          animationDuration=".5s"
+        />
+      )}
+      {!isLoading && (
+        <MultiSelect
+          className="mr-2"
+          value={selectedElements}
+          options={data}
+          onChange={(e) => setSelectedElements(e.value)}
+          placeholder={placeholder}
+          maxSelectedLabels={0}
+          selectedItemsLabel={`Selected {0} of ${data?.length}`}
+        />
+      )}
+    </>
   );
 };

@@ -1,21 +1,21 @@
-import { QueryYears } from "@/models/year";
+import { QueryGenres } from "@/models/genre";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 import { GeneralFilter, GeneralFilterElement, SpecificFilterProps } from "../general-filter";
 
-interface YearsFilterProps extends SpecificFilterProps {}
+interface GenresFilterProps extends SpecificFilterProps {}
 
-export const YearsFilter: FC<YearsFilterProps> = (props) => {
-  const { data, isLoading, isFetched } = useQuery({ ...QueryYears.queryAllYears() });
+export const GenresFilter: FC<GenresFilterProps> = (props) => {
+  const { data, isLoading, isFetched } = useQuery({ ...QueryGenres.queryAllGenres() });
 
   return (
     <GeneralFilter
-      filterName="years filter"
+      filterName="genres filter"
       isLoading={isLoading && !isFetched}
-      placeholder="Select Years"
+      placeholder="Select Genres"
       data={
         data?.map((element) => ({
-          label: `${element.year}`,
+          label: `${element.name}`,
           value: `${element.id}`,
         })) as GeneralFilterElement[]
       }

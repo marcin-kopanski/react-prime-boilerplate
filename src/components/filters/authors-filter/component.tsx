@@ -1,21 +1,21 @@
-import { QueryYears } from "@/models/year";
+import { QueryAuthors } from "@/models/author";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 import { GeneralFilter, GeneralFilterElement, SpecificFilterProps } from "../general-filter";
 
-interface YearsFilterProps extends SpecificFilterProps {}
+interface AuthorsFilterProps extends SpecificFilterProps {}
 
-export const YearsFilter: FC<YearsFilterProps> = (props) => {
-  const { data, isLoading, isFetched } = useQuery({ ...QueryYears.queryAllYears() });
+export const AuthorsFilter: FC<AuthorsFilterProps> = (props) => {
+  const { data, isLoading, isFetched } = useQuery({ ...QueryAuthors.queryAllAuthors() });
 
   return (
     <GeneralFilter
-      filterName="years filter"
+      filterName="authors filter"
       isLoading={isLoading && !isFetched}
-      placeholder="Select Years"
+      placeholder="Select Authors"
       data={
         data?.map((element) => ({
-          label: `${element.year}`,
+          label: `${element.firstName} ${element.lastName}`,
           value: `${element.id}`,
         })) as GeneralFilterElement[]
       }
