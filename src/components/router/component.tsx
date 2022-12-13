@@ -16,11 +16,12 @@ import { LoaderAuthors } from "@/models/author";
 import { AuthorDetails } from "@/feature/dicts/author-details";
 import { LoaderCountries } from "@/models/country";
 import { CountryDetails } from "@/feature/dicts/country-details";
+import { MainOutlet } from "@/feature/main-outlet";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Outlet />,
+    element: <MainOutlet />,
     children: [
       {
         index: true,

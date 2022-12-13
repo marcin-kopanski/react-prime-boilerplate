@@ -29,7 +29,7 @@ export const Dictionaries = () => {
 
   return (
     <>
-      <Menubar model={menuItems} />
+      <Menubar model={menuItems} className="mb-2" />
       <Outlet />
     </>
   );
