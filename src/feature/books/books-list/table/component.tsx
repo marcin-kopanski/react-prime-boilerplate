@@ -28,7 +28,12 @@ export const BooksTable: FC<BooksTableProps> = (props) => {
     <DataTable
       value={props.data}
       className="with-details-button"
-      tableClassName="border-1 surface-border border-round"
+      tableClassName="border-1 surface-border"
+      paginator
+      paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+      rows={10}
+      paginatorClassName=" border-top-none border-1 surface-border"
     >
       <Column
         body={actionBodyTemplate}

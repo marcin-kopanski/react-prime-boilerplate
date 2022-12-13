@@ -10,6 +10,7 @@ export const BooksFilter = () => {
       <>
         <GeneralFilter />
         <GeneralFilter />
+        <GeneralFilter />
         <YearsFilter />
       </>
     ),
