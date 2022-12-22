@@ -3,10 +3,14 @@ import { LoaderFunction } from "react-router-dom";
 import { Book } from "./model";
 import { QueryBooks } from "./query-client";
 
-const loaderAllBooks = (queryClient: QueryClient) => async (): Promise<Book[]> => {
-  const query = QueryBooks.queryAllBooks();
-  return queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query));
-};
+const loaderAllBooks =
+  (queryClient: QueryClient) => async (): Promise<Book[]> => {
+    const query = QueryBooks.queryAllBooks();
+    return (
+      queryClient.getQueryData(query.queryKey as any[]) ??
+      (await queryClient.fetchQuery(query))
+    );
+  };
 
 const loaderBookById =
   (queryClient: QueryClient): LoaderFunction =>
@@ -14,7 +18,8 @@ const loaderBookById =
     if (!!id) {
       const query = QueryBooks.queryBookById(+id);
       return (
-        queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query))
+        queryClient.getQueryData(query.queryKey as any[]) ??
+        (await queryClient.fetchQuery(query))
       );
     }
     return Promise.reject();

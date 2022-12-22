@@ -1,12 +1,18 @@
 import { QueryGenres } from "@/models/genre";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
-import { GeneralFilter, GeneralFilterElement, SpecificFilterProps } from "../general-filter";
+import {
+  GeneralFilter,
+  GeneralFilterElement,
+  SpecificFilterProps,
+} from "../general-filter";
 
 interface GenresFilterProps extends SpecificFilterProps {}
 
 export const GenresFilter: FC<GenresFilterProps> = (props) => {
-  const { data, isLoading, isFetched } = useQuery({ ...QueryGenres.queryAllGenres() });
+  const { data, isLoading, isFetched } = useQuery({
+    ...QueryGenres.queryAllGenres(),
+  });
 
   return (
     <GeneralFilter

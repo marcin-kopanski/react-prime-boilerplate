@@ -11,7 +11,10 @@ export const useAuthorsLoaderData = (): AuthorsLoaderDataResult => {
   const initialData = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof LoaderAuthors.loaderAllAuthors>>
   >;
-  const { data, isLoading } = useQuery({ ...QueryAuthors.queryAllAuthors(), initialData });
+  const { data, isLoading } = useQuery({
+    ...QueryAuthors.queryAllAuthors(),
+    initialData,
+  });
 
   return { data, isLoading };
 };

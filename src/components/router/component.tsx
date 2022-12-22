@@ -1,6 +1,11 @@
 import { BookDetails } from "@/feature/books/book-details";
 import { BooksList } from "@/feature/books/books-list";
-import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
 import { queryClient } from "@/services";
 import { LoaderYears } from "@/models/year/loader-client";
 import { LoaderGenres } from "@/models/genre";

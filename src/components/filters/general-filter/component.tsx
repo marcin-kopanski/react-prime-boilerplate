@@ -1,7 +1,7 @@
 import { MultiSelect } from "primereact/multiselect";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { FC, useState } from "react";
-import { GeneralFilterElement } from "./model";
+import { GeneralFilterElement } from "./interfaces";
 
 export type SpecificFilterProps = {
   filterInitialized: () => void;

@@ -11,7 +11,10 @@ export const useYearsLoaderData = (): YearsLoaderDataResult => {
   const initialData = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof LoaderYears.loaderAllYears>>
   >;
-  const { data, isLoading } = useQuery({ ...QueryYears.queryAllYears(), initialData });
+  const { data, isLoading } = useQuery({
+    ...QueryYears.queryAllYears(),
+    initialData,
+  });
 
   return { data, isLoading };
 };

@@ -11,7 +11,10 @@ export const useBooksLoaderData = (): BooksLoaderDataResult => {
   const initialData = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof LoaderBooks.loaderAllBooks>>
   >;
-  const { data, isLoading } = useQuery({ ...QueryBooks.queryAllBooks(), initialData });
+  const { data, isLoading } = useQuery({
+    ...QueryBooks.queryAllBooks(),
+    initialData,
+  });
 
   return { data, isLoading };
 };

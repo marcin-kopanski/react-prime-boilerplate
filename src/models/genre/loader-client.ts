@@ -3,10 +3,14 @@ import { LoaderFunction } from "react-router-dom";
 import { Genre } from "./model";
 import { QueryGenres } from "./query-client";
 
-const loaderAllGenres = (queryClient: QueryClient) => async (): Promise<Genre[]> => {
-  const query = QueryGenres.queryAllGenres();
-  return queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query));
-};
+const loaderAllGenres =
+  (queryClient: QueryClient) => async (): Promise<Genre[]> => {
+    const query = QueryGenres.queryAllGenres();
+    return (
+      queryClient.getQueryData(query.queryKey as any[]) ??
+      (await queryClient.fetchQuery(query))
+    );
+  };
 
 const loaderGenreById =
   (queryClient: QueryClient): LoaderFunction =>
@@ -14,7 +18,8 @@ const loaderGenreById =
     if (!!id) {
       const query = QueryGenres.queryGenreById(+id);
       return (
-        queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query))
+        queryClient.getQueryData(query.queryKey as any[]) ??
+        (await queryClient.fetchQuery(query))
       );
     }
     return Promise.reject();

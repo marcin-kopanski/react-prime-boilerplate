@@ -14,7 +14,10 @@ export const BookDetails = () => {
   const initialData = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof LoaderBooks.loaderBookById>>
   >;
-  const { data: book, isLoading } = useQuery({ ...QueryBooks.queryBookById(+id), initialData });
+  const { data: book, isLoading } = useQuery({
+    ...QueryBooks.queryBookById(+id),
+    initialData,
+  });
   const { register, control, handleSubmit, watch, formState } = useForm<Book>({
     defaultValues: {
       ...book,
@@ -63,7 +66,10 @@ export const BookDetails = () => {
           )}
         />
 
-        <input type={"datetime-local"} {...register("releaseDate", { required: true })} />
+        <input
+          type={"datetime-local"}
+          {...register("releaseDate", { required: true })}
+        />
 
         <Button type={"submit"}>Submit</Button>
       </form>

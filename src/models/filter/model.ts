@@ -1,3 +1,1 @@
-export type Filter = {
-  
-}
+export type Filter = {};

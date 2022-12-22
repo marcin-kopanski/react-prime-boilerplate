@@ -11,7 +11,10 @@ export const useGenresLoaderData = (): GenresLoaderDataResult => {
   const initialData = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof LoaderGenres.loaderAllGenres>>
   >;
-  const { data, isLoading } = useQuery({ ...QueryGenres.queryAllGenres(), initialData });
+  const { data, isLoading } = useQuery({
+    ...QueryGenres.queryAllGenres(),
+    initialData,
+  });
 
   return { data, isLoading };
 };

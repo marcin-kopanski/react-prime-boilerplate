@@ -3,10 +3,14 @@ import { LoaderFunction } from "react-router-dom";
 import { Year } from "./model";
 import { QueryYears } from "./query-client";
 
-const loaderAllYears = (queryClient: QueryClient) => async (): Promise<Year[]> => {
-  const query = QueryYears.queryAllYears();
-  return queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query));
-};
+const loaderAllYears =
+  (queryClient: QueryClient) => async (): Promise<Year[]> => {
+    const query = QueryYears.queryAllYears();
+    return (
+      queryClient.getQueryData(query.queryKey as any[]) ??
+      (await queryClient.fetchQuery(query))
+    );
+  };
 
 const loaderYearById =
   (queryClient: QueryClient): LoaderFunction =>
@@ -14,7 +18,8 @@ const loaderYearById =
     if (!!id) {
       const query = QueryYears.queryYearById(+id);
       return (
-        queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query))
+        queryClient.getQueryData(query.queryKey as any[]) ??
+        (await queryClient.fetchQuery(query))
       );
     }
     return Promise.reject();

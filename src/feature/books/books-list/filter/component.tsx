@@ -1,4 +1,8 @@
-import { AuthorsFilter, CountriesFilter, GenresFilter } from "@/components/filters";
+import {
+  AuthorsFilter,
+  CountriesFilter,
+  GenresFilter,
+} from "@/components/filters";
 import { FilterActions } from "@/components/filters/filter-actions";
 import { YearsFilter } from "@/components/filters/years-filter";
 import { Toolbar } from "primereact/toolbar";
@@ -6,8 +10,10 @@ import { useMemo, useState } from "react";
 
 export const BooksFilter = () => {
   const [filtersReady, setFiltersReady] = useState(false);
-  const [countriesFilterInitialized, setCountriesFilterInitialized] = useState(false);
-  const [authorsFilterInitialized, setAuthorsFilterInitialized] = useState(false);
+  const [countriesFilterInitialized, setCountriesFilterInitialized] =
+    useState(false);
+  const [authorsFilterInitialized, setAuthorsFilterInitialized] =
+    useState(false);
   const [genresFilterInitialized, setGenresFilterInitialized] = useState(false);
   const [yearsFilterInitialized, setYearsFilterInitialized] = useState(false);
 
@@ -56,7 +62,9 @@ export const BooksFilter = () => {
 
   const leftContents = (
     <>
-      <CountriesFilter filterInitialized={onCountriesFilterInitializedHandler} />
+      <CountriesFilter
+        filterInitialized={onCountriesFilterInitializedHandler}
+      />
       <AuthorsFilter filterInitialized={onAuthorsFilterInitializedHandler} />
       <GenresFilter filterInitialized={onGenresFilterInitializedHandler} />
       <YearsFilter filterInitialized={onYearsFilterInitializedHandler} />

@@ -11,7 +11,10 @@ export const useCountriesLoaderData = (): CountriesLoaderDataResult => {
   const initialData = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof LoaderCountries.loaderAllCountries>>
   >;
-  const { data, isLoading } = useQuery({ ...QueryCountries.queryAllCountries(), initialData });
+  const { data, isLoading } = useQuery({
+    ...QueryCountries.queryAllCountries(),
+    initialData,
+  });
 
   return { data, isLoading };
 };

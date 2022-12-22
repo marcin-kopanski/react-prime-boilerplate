@@ -1,5 +1,11 @@
 import { Filter } from "@/models/filter/model";
-import { createContext, FC, PropsWithChildren, Reducer, useReducer } from "react";
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  Reducer,
+  useReducer,
+} from "react";
 
 export const FilterContext = createContext(null);
 export const FilterDispatchProvider = createContext(null);
@@ -9,7 +15,9 @@ export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <FilterContext.Provider value={null}>
-      <FilterDispatchProvider.Provider value={null}>{children}</FilterDispatchProvider.Provider>
+      <FilterDispatchProvider.Provider value={null}>
+        {children}
+      </FilterDispatchProvider.Provider>
     </FilterContext.Provider>
   );
 };

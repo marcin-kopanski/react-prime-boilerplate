@@ -3,10 +3,14 @@ import { LoaderFunction } from "react-router-dom";
 import { Country } from "./model";
 import { QueryCountries } from "./query-client";
 
-const loaderAllCountries = (queryClient: QueryClient) => async (): Promise<Country[]> => {
-  const query = QueryCountries.queryAllCountries();
-  return queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query));
-};
+const loaderAllCountries =
+  (queryClient: QueryClient) => async (): Promise<Country[]> => {
+    const query = QueryCountries.queryAllCountries();
+    return (
+      queryClient.getQueryData(query.queryKey as any[]) ??
+      (await queryClient.fetchQuery(query))
+    );
+  };
 
 const loaderCountryById =
   (queryClient: QueryClient): LoaderFunction =>
@@ -14,7 +18,8 @@ const loaderCountryById =
     if (!!id) {
       const query = QueryCountries.queryCountryById(+id);
       return (
-        queryClient.getQueryData(query.queryKey as any[]) ?? (await queryClient.fetchQuery(query))
+        queryClient.getQueryData(query.queryKey as any[]) ??
+        (await queryClient.fetchQuery(query))
       );
     }
     return Promise.reject();

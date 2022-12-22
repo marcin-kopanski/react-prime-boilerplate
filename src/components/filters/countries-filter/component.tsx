@@ -1,12 +1,18 @@
 import { QueryCountries } from "@/models/country";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
-import { GeneralFilter, GeneralFilterElement, SpecificFilterProps } from "../general-filter";
+import {
+  GeneralFilter,
+  GeneralFilterElement,
+  SpecificFilterProps,
+} from "../general-filter";
 
 interface CountriesFilterProps extends SpecificFilterProps {}
 
 export const CountriesFilter: FC<CountriesFilterProps> = (props) => {
-  const { data, isLoading, isFetched } = useQuery({ ...QueryCountries.queryAllCountries() });
+  const { data, isLoading, isFetched } = useQuery({
+    ...QueryCountries.queryAllCountries(),
+  });
 
   return (
     <GeneralFilter

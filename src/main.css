@@ -1,4 +1,8 @@
-.with-details-button.p-datatable .p-datatable-table > .p-datatable-tbody > tr > td {
+.with-details-button.p-datatable
+  .p-datatable-table
+  > .p-datatable-tbody
+  > tr
+  > td {
   padding-top: 0;
   padding-bottom: 0;
 }
