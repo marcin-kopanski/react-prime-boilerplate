@@ -1,27 +1,28 @@
-import { BookDetails } from "@/feature/books/book-details";
-import { BooksList } from "@/feature/books/books-list";
+import { BookDetails } from "@/features/books/book-details";
+import { BooksList } from "@/features/books/books-list";
+import { Demo } from "@/features/demo";
+import { AuthorDetails } from "@/features/dicts/author-details";
+import { AuthorsList } from "@/features/dicts/authors-list";
+import { CountriesList } from "@/features/dicts/countries-list";
+import { CountryDetails } from "@/features/dicts/country-details";
+import { Dictionaries } from "@/features/dicts/dicts-outlet";
+import { GenreDetails } from "@/features/dicts/genre-details";
+import { GenresList } from "@/features/dicts/genres-list";
+import { YearDetails } from "@/features/dicts/year-details";
+import { YearsList } from "@/features/dicts/years-list";
+import { MainOutlet } from "@/components/main-outlet";
+import { LoaderAuthors } from "@/models/author";
+import { LoaderBooks } from "@/models/book/loader-client";
+import { LoaderCountries } from "@/models/country";
+import { LoaderGenres } from "@/models/genre";
+import { LoaderYears } from "@/models/year/loader-client";
+import { queryClient } from "@/services";
 import {
   createBrowserRouter,
   Navigate,
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import { queryClient } from "@/services";
-import { LoaderYears } from "@/models/year/loader-client";
-import { LoaderGenres } from "@/models/genre";
-import { Dictionaries } from "@/feature/dicts/dicts-outlet";
-import { AuthorsList } from "@/feature/dicts/authors-list";
-import { CountriesList } from "@/feature/dicts/countries-list";
-import { GenresList } from "@/feature/dicts/genres-list";
-import { GenreDetails } from "@/feature/dicts/genre-details";
-import { YearsList } from "@/feature/dicts/years-list";
-import { YearDetails } from "@/feature/dicts/year-details";
-import { LoaderBooks } from "@/models/book/loader-client";
-import { LoaderAuthors } from "@/models/author";
-import { AuthorDetails } from "@/feature/dicts/author-details";
-import { LoaderCountries } from "@/models/country";
-import { CountryDetails } from "@/feature/dicts/country-details";
-import { MainOutlet } from "@/feature/main-outlet";
 
 const router = createBrowserRouter([
   {
@@ -121,6 +122,10 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "demo",
+        element: <Demo />,
       },
     ],
   },

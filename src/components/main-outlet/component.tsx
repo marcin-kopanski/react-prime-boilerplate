@@ -15,6 +15,10 @@ export const MainOutlet = () => {
         label: "Dicts",
         command: () => navigate("/dicts"),
       },
+      {
+        label: "Demo",
+        command: () => navigate("/demo"),
+      },
     ],
     [],
   );
