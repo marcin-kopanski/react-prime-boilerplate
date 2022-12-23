@@ -1,4 +1,4 @@
-import { useToasts } from "@/centexts";
+import { useToasts } from "@/contexts";
 import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
 

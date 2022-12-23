@@ -1,4 +1,4 @@
-import { useToasts } from "@/centexts";
+import { useToasts } from "@/contexts";
 import { FC, PropsWithChildren } from "react";
 import { ToastsDemo } from "./toasts";
 import { UserDemo } from "./user";
