@@ -33,7 +33,7 @@ export const ToastsDemo = () => {
           Error
         </Button>
         <Button
-          className="p-button-secondary"
+          className="p-button-help"
           onClick={() =>
             toasts.showConfirm(
               "warn",
