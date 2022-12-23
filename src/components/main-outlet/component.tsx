@@ -1,9 +1,11 @@
+import { useUser } from "@/centexts/user/hook";
 import { Menubar } from "primereact/menubar";
 import { useMemo } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 export const MainOutlet = () => {
   const navigate = useNavigate();
+  const { state } = useUser();
 
   const menuItems = useMemo(
     () => [
@@ -23,9 +25,13 @@ export const MainOutlet = () => {
     [],
   );
 
+  const endTemplate = (
+    <p className="m-0 p-0 mr-2">{state.user && `Hello, ${state.user.name}!`}</p>
+  );
+
   return (
     <>
-      <Menubar model={menuItems} className="mb-2" />
+      <Menubar model={menuItems} end={endTemplate} className="mb-2" />
       <Outlet />
     </>
   );
