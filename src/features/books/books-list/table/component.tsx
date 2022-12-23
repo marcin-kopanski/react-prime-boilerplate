@@ -4,14 +4,13 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { useBooksList } from "../context-hook";
 
-type BooksTableProps = {
-  isLoading: boolean;
-  data: Book[];
-};
-
-export const BooksTable: FC<BooksTableProps> = (props) => {
+export const BooksTable: FC<{}> = () => {
   const navigate = useNavigate();
+  const {
+    state: { books, isLoading },
+  } = useBooksList();
 
   const actionBodyTemplate = (data: Book) => {
     return (
@@ -26,7 +25,8 @@ export const BooksTable: FC<BooksTableProps> = (props) => {
 
   return (
     <DataTable
-      value={props.data}
+      value={books}
+      loading={isLoading}
       className="with-details-button"
       tableClassName="border-1 surface-border"
       paginator

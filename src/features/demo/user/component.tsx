@@ -1,4 +1,4 @@
-import { useUser } from "@/contexts/user/hook";
+import { useUser } from "@/contexts/user/context-hook";
 import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
 

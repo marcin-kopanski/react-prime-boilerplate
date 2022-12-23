@@ -1,4 +1,4 @@
-import { useUser } from "@/contexts/user/hook";
+import { useUser } from "@/contexts/user/context-hook";
 import { Menubar } from "primereact/menubar";
 import { useMemo } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
