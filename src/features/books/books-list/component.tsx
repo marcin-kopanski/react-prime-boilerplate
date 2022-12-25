@@ -1,11 +1,13 @@
 import { BooksListContextProvider } from "./context";
-import { BooksFilter } from "./filter";
+import { BooksFilter, BooksFilterProvider } from "./filter";
 import { BooksTable } from "./table";
 
 export const BooksList = () => {
   return (
     <BooksListContextProvider>
-      <BooksFilter />
+      <BooksFilterProvider>
+        <BooksFilter />
+      </BooksFilterProvider>
       <BooksTable />
     </BooksListContextProvider>
   );
