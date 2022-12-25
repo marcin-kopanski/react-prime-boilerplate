@@ -7,8 +7,11 @@ import { FilterActions } from "@/components/filters/filter-actions";
 import { YearsFilter } from "@/components/filters/years-filter";
 import { Toolbar } from "primereact/toolbar";
 import { useMemo, useState } from "react";
+import { useBooksFilter } from "./context-hook";
 
 export const BooksFilter = () => {
+  const { state, dispatch } = useBooksFilter();
+
   const [filtersReady, setFiltersReady] = useState(false);
   const [countriesFilterInitialized, setCountriesFilterInitialized] =
     useState(false);
@@ -48,16 +51,8 @@ export const BooksFilter = () => {
     setYearsFilterInitialized(true);
   };
 
-  const handleSelectAll = (): Promise<void> => {
-    return new Promise<void>((resolve, reject) => {
-      setTimeout(() => {
-        resolve();
-      }, 1000);
-    });
-  };
+  const selectAllHandler = (): void => {
 
-  const selectAllHandler = () => {
-    handleSelectAll();
   };
 
   const leftContents = (

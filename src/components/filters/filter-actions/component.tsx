@@ -2,15 +2,25 @@ import { Button } from "primereact/button";
 import { FC } from "react";
 
 type FilterActionsProps = {
-  onSelectAll: () => void;
+  onApply?: () => void;
+  onSelectAll?: () => void;
+  onUnselectAll?: () => void;
 };
 
-export const FilterActions: FC<FilterActionsProps> = ({ onSelectAll }) => {
+export const FilterActions: FC<FilterActionsProps> = ({
+  onApply,
+  onSelectAll,
+  onUnselectAll,
+}) => {
   return (
-    <>
-      <Button label="Apply" className="p-button-success ml-2" />
-      <Button label="Select all" className="ml-2" onClick={onSelectAll} />
-      <Button label="Unselect all" className="ml-2" />
-    </>
+    <div className="flex flex-ro">
+      {onApply && (
+        <Button label="Apply" className="p-button-success" onClick={onApply} />
+      )}
+
+      {onSelectAll && <Button label="Select all" onClick={onSelectAll} />}
+
+      {onUnselectAll && <Button label="Unselect all" onClick={onUnselectAll} />}
+    </div>
   );
 };

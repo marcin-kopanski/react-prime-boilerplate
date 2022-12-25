@@ -1,4 +1,3 @@
-import { Filter } from "@/models/filter/model";
 import {
   createContext,
   FC,
@@ -7,31 +6,53 @@ import {
   useReducer,
 } from "react";
 
-export const FilterContext = createContext(null);
-export const FilterDispatchProvider = createContext(null);
-
-export const FiltersProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [tasks, dispatch] = useReducer(filterReducer, {});
-
-  return (
-    <FilterContext.Provider value={null}>
-      <FilterDispatchProvider.Provider value={null}>
-        {children}
-      </FilterDispatchProvider.Provider>
-    </FilterContext.Provider>
-  );
+type FilterState = {
+  isInitialized: boolean;
+  isAllSelected: boolean | undefined;
+  isAllUnselected: boolean | undefined;
 };
 
-enum FilterReducerTypes {
-  CREATE = "CREATE",
-}
+type Action = { type: "type" };
+type Dispatch = (action: Action) => void;
+type State = {
+  filters: {
+    countries?: FilterState;
+    authors?: FilterState;
+    genres?: FilterState;
+    years?: FilterState;
+  };
+};
 
-const filterReducer: Reducer<Filter, FilterReducerTypes> = (state, action) => {
-  switch (action) {
-    case FilterReducerTypes.CREATE:
-      return state;
-
-    default:
+const booksFilterReducer: Reducer<State, Action> = (
+  state: State,
+  action: Action,
+): State => {
+  switch (action.type) {
+    case "type":
       return state;
   }
+};
+
+export const BooksFilterContext = createContext<
+  { state: State; dispatch: Dispatch } | undefined
+>(undefined);
+
+export const BooksFilterProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [reducerState, dispatch] = useReducer(booksFilterReducer, {
+    filters: {
+      countries: {
+        isInitialized: false,
+        isAllSelected: undefined,
+        isAllUnselected: undefined,
+      },
+    },
+  });
+
+  const value = { state: reducerState, dispatch };
+
+  return (
+    <BooksFilterContext.Provider value={value}>
+      {children}
+    </BooksFilterContext.Provider>
+  );
 };
