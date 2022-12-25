@@ -1,6 +1,7 @@
-import { useUser } from "@/contexts/user/context-hook";
 import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
+
+import { useUser } from "@/contexts/user/context-hook";
 
 export const UserDemo = () => {
   const { state, dispatch } = useUser();

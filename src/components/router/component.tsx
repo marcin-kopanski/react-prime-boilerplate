@@ -1,3 +1,11 @@
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+
+import { MainOutlet } from "@/components/main-outlet";
 import { BookDetails } from "@/features/books/book-details";
 import { BooksList } from "@/features/books/books-list";
 import { Demo } from "@/features/demo";
@@ -10,19 +18,12 @@ import { GenreDetails } from "@/features/dicts/genre-details";
 import { GenresList } from "@/features/dicts/genres-list";
 import { YearDetails } from "@/features/dicts/year-details";
 import { YearsList } from "@/features/dicts/years-list";
-import { MainOutlet } from "@/components/main-outlet";
 import { LoaderAuthors } from "@/models/author";
 import { LoaderBooks } from "@/models/book/loader-client";
 import { LoaderCountries } from "@/models/country";
 import { LoaderGenres } from "@/models/genre";
 import { LoaderYears } from "@/models/year/loader-client";
 import { queryClient } from "@/services";
-import {
-  createBrowserRouter,
-  Navigate,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
 
 const router = createBrowserRouter([
   {

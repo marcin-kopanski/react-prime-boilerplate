@@ -1,3 +1,7 @@
+import { useMemo, useState } from "react";
+
+import { Toolbar } from "primereact/toolbar";
+
 import {
   AuthorsFilter,
   CountriesFilter,
@@ -5,8 +9,7 @@ import {
 } from "@/components/filters";
 import { FilterActions } from "@/components/filters/filter-actions";
 import { YearsFilter } from "@/components/filters/years-filter";
-import { Toolbar } from "primereact/toolbar";
-import { useMemo, useState } from "react";
+
 import { useBooksFilter } from "./context-hook";
 
 export const BooksFilter = () => {
@@ -51,9 +54,7 @@ export const BooksFilter = () => {
     setYearsFilterInitialized(true);
   };
 
-  const selectAllHandler = (): void => {
-
-  };
+  const selectAllHandler = (): void => {};
 
   const leftContents = (
     <>

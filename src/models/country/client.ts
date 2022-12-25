@@ -1,5 +1,7 @@
-import { axiosInstance } from "@/services";
 import { AxiosResponse } from "axios";
+
+import { axiosInstance } from "@/services";
+
 import { Country } from "./model";
 
 const COUNTRIES_URL_API = "dicts/countries";

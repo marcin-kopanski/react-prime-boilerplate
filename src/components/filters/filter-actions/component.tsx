@@ -1,5 +1,6 @@
-import { Button } from "primereact/button";
 import { FC } from "react";
+
+import { Button } from "primereact/button";
 
 type FilterActionsProps = {
   onApply?: () => void;

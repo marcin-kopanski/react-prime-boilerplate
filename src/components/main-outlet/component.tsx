@@ -1,7 +1,9 @@
-import { useUser } from "@/contexts/user/context-hook";
-import { Menubar } from "primereact/menubar";
 import { useMemo } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+
+import { Menubar } from "primereact/menubar";
+
+import { useUser } from "@/contexts/user/context-hook";
 
 export const MainOutlet = () => {
   const navigate = useNavigate();

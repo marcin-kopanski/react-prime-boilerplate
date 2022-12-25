@@ -1,9 +1,12 @@
-import { Book } from "@/models";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "primereact/button";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { Book } from "@/models";
+
 import { useBooksList } from "../context-hook";
 
 export const BooksTable: FC<{}> = () => {

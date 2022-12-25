@@ -1,6 +1,9 @@
-import { QueryGenres } from "@/models/genre";
-import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { QueryGenres } from "@/models/genre";
+
 import {
   GeneralFilter,
   GeneralFilterElement,

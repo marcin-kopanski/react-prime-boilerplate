@@ -1,6 +1,8 @@
-import { LoaderYears, QueryYears, Year } from "@/models/year";
-import { useQuery } from "@tanstack/react-query";
 import { useLoaderData, useParams } from "react-router-dom";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { LoaderYears, QueryYears, Year } from "@/models/year";
 
 type YearsLoaderDetailsHook = {
   details: Year | undefined;

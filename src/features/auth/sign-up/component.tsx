@@ -1,6 +1,8 @@
 import { FC } from "react";
+
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
+
 import { AuthFooter } from "../auth-footer";
 
 type SignUpProps = {};

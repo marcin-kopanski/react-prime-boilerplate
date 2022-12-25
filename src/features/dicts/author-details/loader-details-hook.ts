@@ -1,6 +1,8 @@
-import { LoaderAuthors, QueryAuthors, Author } from "@/models/author";
-import { useQuery } from "@tanstack/react-query";
 import { useLoaderData, useParams } from "react-router-dom";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { LoaderAuthors, QueryAuthors, Author } from "@/models/author";
 
 type AuthorsLoaderDetailsHook = {
   details: Author | undefined;

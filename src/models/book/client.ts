@@ -1,5 +1,7 @@
-import { axiosInstance } from "@/services";
 import { AxiosResponse } from "axios";
+
+import { axiosInstance } from "@/services";
+
 import { Book } from "./model";
 
 const BOOKS_URL_API = "books";

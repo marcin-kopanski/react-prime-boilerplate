@@ -1,11 +1,14 @@
+import { Controller, useForm } from "react-hook-form";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
+
+import { useQuery } from "@tanstack/react-query";
+
 import { Book } from "@/models";
 import { LoaderBooks } from "@/models/book/loader-client";
 import { QueryBooks } from "@/models/book/query-client";
-import { useQuery } from "@tanstack/react-query";
-import { Button } from "primereact/button";
-import { InputText } from "primereact/inputtext";
-import { Controller, useForm } from "react-hook-form";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 export const BookDetails = () => {
   const navigate = useNavigate();

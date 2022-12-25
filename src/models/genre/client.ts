@@ -1,5 +1,7 @@
-import { axiosInstance } from "@/services";
 import { AxiosResponse } from "axios";
+
+import { axiosInstance } from "@/services";
+
 import { Genre } from "./model";
 
 const GENRES_URL_API = "dicts/genres";

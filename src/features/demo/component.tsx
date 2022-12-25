@@ -1,5 +1,7 @@
-import { useToasts } from "@/contexts";
 import { FC, PropsWithChildren } from "react";
+
+import { useToasts } from "@/contexts";
+
 import { ToastsDemo } from "./toasts";
 import { UserDemo } from "./user";
 

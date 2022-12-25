@@ -1,6 +1,7 @@
-import { useToasts } from "@/contexts";
 import { Button } from "primereact/button";
 import { Panel } from "primereact/panel";
+
+import { useToasts } from "@/contexts";
 
 export const ToastsDemo = () => {
   const toasts = useToasts();

@@ -1,6 +1,8 @@
-import { LoaderGenres, QueryGenres, Genre } from "@/models/genre";
-import { useQuery } from "@tanstack/react-query";
 import { useLoaderData, useParams } from "react-router-dom";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { LoaderGenres, QueryGenres, Genre } from "@/models/genre";
 
 type GenresLoaderDetailsHook = {
   details: Genre | undefined;

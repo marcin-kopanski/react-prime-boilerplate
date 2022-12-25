@@ -1,6 +1,8 @@
-import { User } from "@/models/user";
 import { createContext, FC, PropsWithChildren, useReducer } from "react";
+
 import { useReadLocalStorage } from "usehooks-ts";
+
+import { User } from "@/models/user";
 
 type Action = { type: "login"; payload: User } | { type: "logout" };
 type Dispatch = (action: Action) => void;

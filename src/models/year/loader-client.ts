@@ -1,5 +1,7 @@
-import { QueryClient } from "@tanstack/react-query";
 import { LoaderFunction } from "react-router-dom";
+
+import { QueryClient } from "@tanstack/react-query";
+
 import { Year } from "./model";
 import { QueryYears } from "./query-client";
 

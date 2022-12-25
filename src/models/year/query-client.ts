@@ -1,4 +1,5 @@
 import { UseQueryOptions } from "@tanstack/react-query";
+
 import { YearsClient } from "./client";
 import { Year } from "./model";
 import { YearsKeys } from "./query-key-factory";

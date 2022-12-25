@@ -1,6 +1,8 @@
-import { LoaderCountries, QueryCountries, Country } from "@/models/country";
-import { useQuery } from "@tanstack/react-query";
 import { useLoaderData, useParams } from "react-router-dom";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { LoaderCountries, QueryCountries, Country } from "@/models/country";
 
 type CountriesLoaderDetailsHook = {
   details: Country | undefined;

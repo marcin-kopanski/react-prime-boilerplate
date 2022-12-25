@@ -1,6 +1,9 @@
-import { QueryYears } from "@/models/year";
-import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { QueryYears } from "@/models/year";
+
 import {
   GeneralFilter,
   GeneralFilterElement,

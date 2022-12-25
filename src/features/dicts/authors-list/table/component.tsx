@@ -1,9 +1,11 @@
-import { Author } from "@/models/author";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "primereact/button";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { Author } from "@/models/author";
 
 type AuthorsTableProps = {
   isLoading: boolean;

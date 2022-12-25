@@ -1,6 +1,9 @@
-import { QueryAuthors } from "@/models/author";
-import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { QueryAuthors } from "@/models/author";
+
 import {
   GeneralFilter,
   GeneralFilterElement,

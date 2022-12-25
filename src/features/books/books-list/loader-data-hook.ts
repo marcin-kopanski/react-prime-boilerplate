@@ -1,6 +1,8 @@
-import { LoaderBooks, QueryBooks, Book } from "@/models/book";
-import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router-dom";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { LoaderBooks, QueryBooks, Book } from "@/models/book";
 
 type BooksLoaderDataResult = {
   data: Book[];

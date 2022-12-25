@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import { Menubar } from "primereact/menubar";
 import { Outlet, useNavigate } from "react-router-dom";
+
+import { Menubar } from "primereact/menubar";
 
 export const Dictionaries = () => {
   const navigate = useNavigate();

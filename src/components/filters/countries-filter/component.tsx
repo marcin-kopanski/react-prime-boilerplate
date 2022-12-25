@@ -1,6 +1,9 @@
-import { QueryCountries } from "@/models/country";
-import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { QueryCountries } from "@/models/country";
+
 import {
   GeneralFilter,
   GeneralFilterElement,

@@ -1,6 +1,8 @@
-import { LoaderYears, QueryYears, Year } from "@/models/year";
-import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router-dom";
+
+import { useQuery } from "@tanstack/react-query";
+
+import { LoaderYears, QueryYears, Year } from "@/models/year";
 
 type YearsLoaderDataResult = {
   data: Year[];

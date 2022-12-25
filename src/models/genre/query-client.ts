@@ -1,4 +1,5 @@
 import { UseQueryOptions } from "@tanstack/react-query";
+
 import { GenresClient } from "./client";
 import { Genre } from "./model";
 import { GenresKeys } from "./query-key-factory";

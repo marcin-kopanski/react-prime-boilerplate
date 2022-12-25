@@ -1,5 +1,7 @@
-import { axiosInstance } from "@/services";
 import { AxiosResponse } from "axios";
+
+import { axiosInstance } from "@/services";
+
 import { Author } from "./model";
 
 const AUTHORS_URL_API = "dicts/authors";
