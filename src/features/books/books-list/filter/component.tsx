@@ -54,23 +54,29 @@ export const BooksFilter = () => {
     setYearsFilterInitialized(true);
   };
 
+  const applyHandler = (): void => {};
   const selectAllHandler = (): void => {};
+  const unselectAllHandler = (): void => {};
 
   const leftContents = (
-    <>
+    <div className="flex flex-row gap-2">
       <CountriesFilter
         filterInitialized={onCountriesFilterInitializedHandler}
       />
       <AuthorsFilter filterInitialized={onAuthorsFilterInitializedHandler} />
       <GenresFilter filterInitialized={onGenresFilterInitializedHandler} />
       <YearsFilter filterInitialized={onYearsFilterInitializedHandler} />
-    </>
+    </div>
   );
 
   const rightContents = useMemo(
     () => (
       <>
-        <FilterActions onSelectAll={selectAllHandler} />
+        <FilterActions
+          onApply={applyHandler}
+          onSelectAll={selectAllHandler}
+          onUnselectAll={unselectAllHandler}
+        />
       </>
     ),
     [],

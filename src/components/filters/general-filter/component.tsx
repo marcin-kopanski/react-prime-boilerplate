@@ -43,7 +43,6 @@ export const GeneralFilter: FC<GeneralFilterProps> = ({
       )}
       {!isLoading && (
         <MultiSelect
-          className="mr-2"
           value={selectedElements}
           options={data}
           onChange={(e) => setSelectedElements(e.value)}

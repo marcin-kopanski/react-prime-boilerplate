@@ -14,7 +14,7 @@ export const FilterActions: FC<FilterActionsProps> = ({
   onUnselectAll,
 }) => {
   return (
-    <div className="flex flex-ro">
+    <div className="flex flex-row gap-2">
       {onApply && (
         <Button label="Apply" className="p-button-success" onClick={onApply} />
       )}
