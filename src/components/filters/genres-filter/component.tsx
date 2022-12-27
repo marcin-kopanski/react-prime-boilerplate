@@ -19,7 +19,6 @@ export const GenresFilter: FC<GenresFilterProps> = (props) => {
 
   return (
     <GeneralFilter
-      filterName="genres filter"
       isLoading={isLoading && !isFetched}
       placeholder="Select Genres"
       data={
@@ -28,7 +27,7 @@ export const GenresFilter: FC<GenresFilterProps> = (props) => {
           value: `${element.id}`,
         })) as GeneralFilterElement[]
       }
-      filterInitialized={() => props.filterInitialized()}
+      filterInitialized={props.filterInitialized}
     />
   );
 };

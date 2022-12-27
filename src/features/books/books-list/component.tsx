@@ -1,14 +1,14 @@
 import { BooksListContextProvider } from "./context";
-import { BooksFilter, BooksFilterProvider } from "./filter";
+import { BooksFilter } from "./filter";
 import { BooksTable } from "./table";
 
 export const BooksList = () => {
   return (
     <BooksListContextProvider>
-      <BooksFilterProvider>
+      <div className="flex flex-column gap-2">
         <BooksFilter />
-      </BooksFilterProvider>
-      <BooksTable />
+        <BooksTable />
+      </div>
     </BooksListContextProvider>
   );
 };

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { MultiSelect } from "primereact/multiselect";
 import { ProgressSpinner } from "primereact/progressspinner";
@@ -6,19 +6,17 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import { GeneralFilterElement } from "./interfaces";
 
 export type SpecificFilterProps = {
-  filterInitialized: () => void;
+  filterInitialized: (selectedElements: string[]) => void;
 };
 
 type GeneralFilterProps = {
-  filterName: string;
   isLoading: boolean;
   placeholder: string;
   data: GeneralFilterElement[];
-  filterInitialized: () => void;
+  filterInitialized: (selectedElements: string[]) => void;
 };
 
 export const GeneralFilter: FC<GeneralFilterProps> = ({
-  filterName,
   isLoading,
   placeholder,
   data,
@@ -26,10 +24,13 @@ export const GeneralFilter: FC<GeneralFilterProps> = ({
 }) => {
   const [selectedElements, setSelectedElements] = useState<string[]>();
 
-  if (!isLoading && !selectedElements) {
-    setSelectedElements(data.map((element) => element.value));
-    filterInitialized();
-  }
+  useEffect(() => {
+    if (!isLoading && !selectedElements) {
+      const elementsToSelect = data.map((element) => element.value);
+      setSelectedElements(elementsToSelect);
+      filterInitialized(elementsToSelect);
+    }
+  }, [isLoading, selectedElements]);
 
   return (
     <>

@@ -19,7 +19,6 @@ export const YearsFilter: FC<YearsFilterProps> = (props) => {
 
   return (
     <GeneralFilter
-      filterName="years filter"
       isLoading={isLoading && !isFetched}
       placeholder="Select Years"
       data={
@@ -28,7 +27,7 @@ export const YearsFilter: FC<YearsFilterProps> = (props) => {
           value: `${element.id}`,
         })) as GeneralFilterElement[]
       }
-      filterInitialized={() => props.filterInitialized()}
+      filterInitialized={props.filterInitialized}
     />
   );
 };

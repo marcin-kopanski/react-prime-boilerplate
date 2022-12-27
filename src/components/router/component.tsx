@@ -41,7 +41,6 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <BooksList />,
-            loader: LoaderBooks.loaderAllBooks(queryClient),
           },
           {
             path: ":id",

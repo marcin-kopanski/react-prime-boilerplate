@@ -7,12 +7,12 @@ import { DataTable } from "primereact/datatable";
 
 import { Book } from "@/models";
 
-import { useBooksList } from "../context-hook";
+import { useBooksList } from "../context";
 
 export const BooksTable: FC<{}> = () => {
   const navigate = useNavigate();
   const {
-    state: { books, isLoading },
+    booksData: { books, isLoading },
   } = useBooksList();
 
   const actionBodyTemplate = (data: Book) => {

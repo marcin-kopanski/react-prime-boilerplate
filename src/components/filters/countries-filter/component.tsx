@@ -19,7 +19,6 @@ export const CountriesFilter: FC<CountriesFilterProps> = (props) => {
 
   return (
     <GeneralFilter
-      filterName="countries filter"
       isLoading={isLoading && !isFetched}
       placeholder="Select Countries"
       data={
@@ -28,7 +27,7 @@ export const CountriesFilter: FC<CountriesFilterProps> = (props) => {
           value: `${element.id}`,
         })) as GeneralFilterElement[]
       }
-      filterInitialized={() => props.filterInitialized()}
+      filterInitialized={props.filterInitialized}
     />
   );
 };

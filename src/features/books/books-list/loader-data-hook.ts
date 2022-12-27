@@ -1,22 +1,20 @@
-import { useLoaderData } from "react-router-dom";
-
 import { useQuery } from "@tanstack/react-query";
 
-import { LoaderBooks, QueryBooks, Book } from "@/models/book";
+import { Book, QueryBooks } from "@/models/book";
+
+import { FilterConfig } from "./context";
 
 type BooksLoaderDataResult = {
   data: Book[];
   isLoading: boolean;
 };
 
-export const useBooksLoaderData = (): BooksLoaderDataResult => {
-  const initialData = useLoaderData() as Awaited<
-    ReturnType<ReturnType<typeof LoaderBooks.loaderAllBooks>>
-  >;
-  const { data, isLoading } = useQuery({
-    ...QueryBooks.queryAllBooks(),
-    initialData,
+export const useBooksLoaderData = (
+  filterConfig: FilterConfig | undefined,
+): BooksLoaderDataResult => {
+  const { data, isLoading, isFetching } = useQuery({
+    ...QueryBooks.queryBooksByFilter(filterConfig),
   });
 
-  return { data, isLoading };
+  return { data: data ? data : [], isLoading: isFetching && isLoading };
 };

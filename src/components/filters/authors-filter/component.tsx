@@ -19,7 +19,6 @@ export const AuthorsFilter: FC<AuthorsFilterProps> = (props) => {
 
   return (
     <GeneralFilter
-      filterName="authors filter"
       isLoading={isLoading && !isFetched}
       placeholder="Select Authors"
       data={
@@ -28,7 +27,7 @@ export const AuthorsFilter: FC<AuthorsFilterProps> = (props) => {
           value: `${element.id}`,
         })) as GeneralFilterElement[]
       }
-      filterInitialized={() => props.filterInitialized()}
+      filterInitialized={props.filterInitialized}
     />
   );
 };

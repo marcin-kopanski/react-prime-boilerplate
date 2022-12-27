@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 
 import { Toolbar } from "primereact/toolbar";
 
@@ -10,63 +10,74 @@ import {
 import { FilterActions } from "@/components/filters/filter-actions";
 import { YearsFilter } from "@/components/filters/years-filter";
 
-import { useBooksFilter } from "./context-hook";
+import { useBooksList } from "../context";
 
 export const BooksFilter = () => {
-  const { state, dispatch } = useBooksFilter();
+  const { dispatch } = useBooksList();
 
-  const [filtersReady, setFiltersReady] = useState(false);
-  const [countriesFilterInitialized, setCountriesFilterInitialized] =
-    useState(false);
-  const [authorsFilterInitialized, setAuthorsFilterInitialized] =
-    useState(false);
-  const [genresFilterInitialized, setGenresFilterInitialized] = useState(false);
-  const [yearsFilterInitialized, setYearsFilterInitialized] = useState(false);
+  const onCountriesFilterInitializedHandler = useCallback(
+    (selectedElements: string[]) => {
+      console.log("Countries filter initialized");
+      dispatch({
+        type: "COUNTRIES_INITIALIZED",
+        selectedElements,
+      });
+    },
+    [],
+  );
 
-  if (
-    countriesFilterInitialized &&
-    authorsFilterInitialized &&
-    genresFilterInitialized &&
-    yearsFilterInitialized &&
-    !filtersReady
-  ) {
-    console.log("setFiltersReady(true)");
-    setFiltersReady(true);
-  }
+  const onAuthorsFilterInitializedHandler = useCallback(
+    (selectedElements: string[]) => {
+      console.log("Authors filter initialized");
+      dispatch({
+        type: "AUTHORS_INITIALIZED",
+        selectedElements,
+      });
+    },
+    [],
+  );
 
-  const onCountriesFilterInitializedHandler = () => {
-    console.log("Countries filter initialized");
-    setCountriesFilterInitialized(true);
-  };
+  const onGenresFilterInitializedHandler = useCallback(
+    (selectedElements: string[]) => {
+      console.log("Genres filter initialized");
+      dispatch({
+        type: "GENRES_INITIALIZED",
+        selectedElements,
+      });
+    },
+    [],
+  );
 
-  const onAuthorsFilterInitializedHandler = () => {
-    console.log("Authors filter initialized");
-    setAuthorsFilterInitialized(true);
-  };
+  const onYearsFilterInitializedHandler = useCallback(
+    (selectedElements: string[]) => {
+      console.log("Years filter initialized");
+      dispatch({
+        type: "YEARS_INITIALIZED",
+        selectedElements,
+      });
+    },
+    [],
+  );
 
-  const onGenresFilterInitializedHandler = () => {
-    console.log("Genres filter initialized");
-    setGenresFilterInitialized(true);
-  };
+  const applyHandler = useCallback(() => {
+    dispatch({ type: "SET_CURRENT_FILTER" });
+  }, []);
 
-  const onYearsFilterInitializedHandler = () => {
-    console.log("Years filter initialized");
-    setYearsFilterInitialized(true);
-  };
-
-  const applyHandler = (): void => {};
   const selectAllHandler = (): void => {};
   const unselectAllHandler = (): void => {};
 
-  const leftContents = (
-    <div className="flex flex-row gap-2">
-      <CountriesFilter
-        filterInitialized={onCountriesFilterInitializedHandler}
-      />
-      <AuthorsFilter filterInitialized={onAuthorsFilterInitializedHandler} />
-      <GenresFilter filterInitialized={onGenresFilterInitializedHandler} />
-      <YearsFilter filterInitialized={onYearsFilterInitializedHandler} />
-    </div>
+  const leftContents = useMemo(
+    () => (
+      <div className="flex flex-row gap-2">
+        <CountriesFilter
+          filterInitialized={onCountriesFilterInitializedHandler}
+        />
+        <AuthorsFilter filterInitialized={onAuthorsFilterInitializedHandler} />
+        <GenresFilter filterInitialized={onGenresFilterInitializedHandler} />
+        <YearsFilter filterInitialized={onYearsFilterInitializedHandler} />
+      </div>
+    ),
+    [],
   );
 
   const rightContents = useMemo(
@@ -82,5 +93,5 @@ export const BooksFilter = () => {
     [],
   );
 
-  return <Toolbar left={leftContents} right={rightContents} className="mb-2" />;
+  return <Toolbar left={leftContents} right={rightContents} />;
 };
