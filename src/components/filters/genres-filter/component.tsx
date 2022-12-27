@@ -28,6 +28,7 @@ export const GenresFilter: FC<GenresFilterProps> = (props) => {
         })) as GeneralFilterElement[]
       }
       filterInitialized={props.filterInitialized}
+      selectedElementsChange={props.selectedElementsChange}
     />
   );
 };

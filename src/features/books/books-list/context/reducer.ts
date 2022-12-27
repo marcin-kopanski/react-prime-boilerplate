@@ -31,6 +31,20 @@ export const booksListReducer: Reducer<State, Action> = (
       };
     }
 
+    case "COUNTRIES_CHANGED": {
+      const filter = {
+        ...state.filters.countries,
+        isInitialized: true,
+        selectedElements: action.selectedElements,
+      };
+      const newState = {
+        ...state,
+        filters: { ...state.filters, countries: { ...filter } },
+      };
+
+      return newState;
+    }
+
     case "AUTHORS_INITIALIZED": {
       const filter = {
         ...state.filters.authors,
@@ -53,6 +67,20 @@ export const booksListReducer: Reducer<State, Action> = (
         filtersReady,
         currentFilter,
       };
+    }
+
+    case "AUTHORS_CHANGED": {
+      const filter = {
+        ...state.filters.authors,
+        isInitialized: true,
+        selectedElements: action.selectedElements,
+      };
+      const newState = {
+        ...state,
+        filters: { ...state.filters, authors: { ...filter } },
+      };
+
+      return newState;
     }
 
     case "GENRES_INITIALIZED": {
@@ -79,6 +107,20 @@ export const booksListReducer: Reducer<State, Action> = (
       };
     }
 
+    case "GENRES_CHANGED": {
+      const filter = {
+        ...state.filters.genres,
+        isInitialized: true,
+        selectedElements: action.selectedElements,
+      };
+      const newState = {
+        ...state,
+        filters: { ...state.filters, genres: { ...filter } },
+      };
+
+      return newState;
+    }
+
     case "YEARS_INITIALIZED": {
       const filter = {
         ...state.filters.years,
@@ -101,6 +143,20 @@ export const booksListReducer: Reducer<State, Action> = (
         filtersReady,
         currentFilter,
       };
+    }
+
+    case "YEARS_CHANGED": {
+      const filter = {
+        ...state.filters.years,
+        isInitialized: true,
+        selectedElements: action.selectedElements,
+      };
+      const newState = {
+        ...state,
+        filters: { ...state.filters, years: { ...filter } },
+      };
+
+      return newState;
     }
 
     case "SET_CURRENT_FILTER": {

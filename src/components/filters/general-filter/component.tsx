@@ -1,12 +1,13 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 
-import { MultiSelect } from "primereact/multiselect";
+import { MultiSelect, MultiSelectChangeParams } from "primereact/multiselect";
 import { ProgressSpinner } from "primereact/progressspinner";
 
 import { GeneralFilterElement } from "./interfaces";
 
 export type SpecificFilterProps = {
   filterInitialized: (selectedElements: string[]) => void;
+  selectedElementsChange: (selectedElements: string[]) => void;
 };
 
 type GeneralFilterProps = {
@@ -14,6 +15,7 @@ type GeneralFilterProps = {
   placeholder: string;
   data: GeneralFilterElement[];
   filterInitialized: (selectedElements: string[]) => void;
+  selectedElementsChange: (selectedElements: string[]) => void;
 };
 
 export const GeneralFilter: FC<GeneralFilterProps> = ({
@@ -21,6 +23,7 @@ export const GeneralFilter: FC<GeneralFilterProps> = ({
   placeholder,
   data,
   filterInitialized,
+  selectedElementsChange,
 }) => {
   const [selectedElements, setSelectedElements] = useState<string[]>();
 
@@ -31,6 +34,11 @@ export const GeneralFilter: FC<GeneralFilterProps> = ({
       filterInitialized(elementsToSelect);
     }
   }, [isLoading, selectedElements]);
+
+  const onChangeHandler = useCallback((e: MultiSelectChangeParams) => {
+    setSelectedElements(e.value);
+    selectedElementsChange(e.value);
+  }, []);
 
   return (
     <>
@@ -46,7 +54,7 @@ export const GeneralFilter: FC<GeneralFilterProps> = ({
         <MultiSelect
           value={selectedElements}
           options={data}
-          onChange={(e) => setSelectedElements(e.value)}
+          onChange={onChangeHandler}
           placeholder={placeholder}
           maxSelectedLabels={0}
           selectedItemsLabel={`Selected {0} of ${data?.length}`}

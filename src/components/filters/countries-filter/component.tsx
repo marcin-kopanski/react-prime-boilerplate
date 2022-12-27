@@ -28,6 +28,7 @@ export const CountriesFilter: FC<CountriesFilterProps> = (props) => {
         })) as GeneralFilterElement[]
       }
       filterInitialized={props.filterInitialized}
+      selectedElementsChange={props.selectedElementsChange}
     />
   );
 };

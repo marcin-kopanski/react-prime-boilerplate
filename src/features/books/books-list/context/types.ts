@@ -11,6 +11,14 @@ export type Action =
     }
   | {
       type: "SET_CURRENT_FILTER";
+    }
+  | {
+      type:
+        | "COUNTRIES_CHANGED"
+        | "AUTHORS_CHANGED"
+        | "GENRES_CHANGED"
+        | "YEARS_CHANGED";
+      selectedElements: string[];
     };
 
 export type Dispatch = (action: Action) => void;

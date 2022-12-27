@@ -28,6 +28,7 @@ export const AuthorsFilter: FC<AuthorsFilterProps> = (props) => {
         })) as GeneralFilterElement[]
       }
       filterInitialized={props.filterInitialized}
+      selectedElementsChange={props.selectedElementsChange}
     />
   );
 };

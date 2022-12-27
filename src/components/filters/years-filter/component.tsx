@@ -28,6 +28,7 @@ export const YearsFilter: FC<YearsFilterProps> = (props) => {
         })) as GeneralFilterElement[]
       }
       filterInitialized={props.filterInitialized}
+      selectedElementsChange={props.selectedElementsChange}
     />
   );
 };

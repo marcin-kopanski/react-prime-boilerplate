@@ -17,9 +17,19 @@ export const BooksFilter = () => {
 
   const onCountriesFilterInitializedHandler = useCallback(
     (selectedElements: string[]) => {
-      console.log("Countries filter initialized");
       dispatch({
         type: "COUNTRIES_INITIALIZED",
+        selectedElements,
+      });
+    },
+    [],
+  );
+
+  const onCountriesFilterSelectedElementsChangeHandler = useCallback(
+    (selectedElements: string[]) => {
+      console.log("Countries filter changed", selectedElements);
+      dispatch({
+        type: "COUNTRIES_CHANGED",
         selectedElements,
       });
     },
@@ -37,6 +47,16 @@ export const BooksFilter = () => {
     [],
   );
 
+  const onAuthorsFilterSelectedElementsChangeHandler = useCallback(
+    (selectedElements: string[]) => {
+      dispatch({
+        type: "AUTHORS_CHANGED",
+        selectedElements,
+      });
+    },
+    [],
+  );
+
   const onGenresFilterInitializedHandler = useCallback(
     (selectedElements: string[]) => {
       console.log("Genres filter initialized");
@@ -48,11 +68,32 @@ export const BooksFilter = () => {
     [],
   );
 
+  const onGenresFilterSelectedElementsChangeHandler = useCallback(
+    (selectedElements: string[]) => {
+      dispatch({
+        type: "GENRES_CHANGED",
+        selectedElements,
+      });
+    },
+    [],
+  );
+
   const onYearsFilterInitializedHandler = useCallback(
     (selectedElements: string[]) => {
       console.log("Years filter initialized");
       dispatch({
         type: "YEARS_INITIALIZED",
+        selectedElements,
+      });
+    },
+    [],
+  );
+
+  const onYearsFilterSelectedElementsChangeHandler = useCallback(
+    (selectedElements: string[]) => {
+      console.log("Years filter changed", selectedElements);
+      dispatch({
+        type: "YEARS_CHANGED",
         selectedElements,
       });
     },
@@ -71,10 +112,22 @@ export const BooksFilter = () => {
       <div className="flex flex-row gap-2">
         <CountriesFilter
           filterInitialized={onCountriesFilterInitializedHandler}
+          selectedElementsChange={
+            onCountriesFilterSelectedElementsChangeHandler
+          }
         />
-        <AuthorsFilter filterInitialized={onAuthorsFilterInitializedHandler} />
-        <GenresFilter filterInitialized={onGenresFilterInitializedHandler} />
-        <YearsFilter filterInitialized={onYearsFilterInitializedHandler} />
+        <AuthorsFilter
+          filterInitialized={onAuthorsFilterInitializedHandler}
+          selectedElementsChange={onAuthorsFilterSelectedElementsChangeHandler}
+        />
+        <GenresFilter
+          filterInitialized={onGenresFilterInitializedHandler}
+          selectedElementsChange={onGenresFilterSelectedElementsChangeHandler}
+        />
+        <YearsFilter
+          filterInitialized={onYearsFilterInitializedHandler}
+          selectedElementsChange={onYearsFilterSelectedElementsChangeHandler}
+        />
       </div>
     ),
     [],
