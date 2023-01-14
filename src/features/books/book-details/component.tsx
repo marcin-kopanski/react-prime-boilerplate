@@ -36,7 +36,7 @@ export const BookDetails = () => {
 
   return (
     <div>
-      <p>{`"${book?.title}" by ${book?.author}`}</p>
+      <p>{`"${book?.title}" by ${book?.author.firstName} ${book?.author.lastName}`}</p>
 
       <form onSubmit={onSubmitHandler}>
         <Controller
@@ -55,12 +55,12 @@ export const BookDetails = () => {
         />
 
         <Controller
-          name="author"
+          name="author.firstName"
           control={control}
           rules={{ required: { value: true, message: "Author is required!" } }}
           render={({ field, fieldState: { error } }) => (
             <div className="field">
-              <label htmlFor="author-input">Author</label>
+              <label htmlFor="author-input">Author First Name</label>
               <InputText id="author-input" {...field} />
               <small id="author-input-help" className="block">
                 {error ? error.message : "Helper"}
