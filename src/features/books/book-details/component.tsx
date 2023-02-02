@@ -36,7 +36,7 @@ export const BookDetails = () => {
 
   return (
     <div>
-      <p>{`"${book?.title}" by ${book?.author.firstName} ${book?.author.lastName}`}</p>
+      <h1>{`"${book?.title}" by ${book?.author.firstName} ${book?.author.lastName}`}</h1>
 
       <form onSubmit={onSubmitHandler}>
         <Controller
@@ -44,12 +44,16 @@ export const BookDetails = () => {
           control={control}
           rules={{ required: { value: true, message: "Title is required!!" } }}
           render={({ field, fieldState: { error } }) => (
-            <div className="field">
-              <label htmlFor="title-input">Title</label>
-              <InputText id="title-input" {...field} />
-              <small id="title-input-help" className="block">
-                {error ? error.message : "Helper"}
-              </small>
+            <div className="field grid">
+              <label htmlFor="title-input" className="col-fixed w-10rem">
+                Title
+              </label>
+              <div className="col">
+                <InputText id="title-input" {...field} />
+                <small id="title-input-help" className="hidden mt-2">
+                  {error ? error.message : "Helper"}
+                </small>
+              </div>
             </div>
           )}
         />
@@ -59,12 +63,16 @@ export const BookDetails = () => {
           control={control}
           rules={{ required: { value: true, message: "Author is required!" } }}
           render={({ field, fieldState: { error } }) => (
-            <div className="field">
-              <label htmlFor="author-input">Author First Name</label>
-              <InputText id="author-input" {...field} />
-              <small id="author-input-help" className="block">
-                {error ? error.message : "Helper"}
-              </small>
+            <div className="field grid">
+              <label htmlFor="author-input" className="col-fixed w-10rem">
+                Author First Name
+              </label>
+              <div className="col">
+                <InputText id="author-input" {...field} />
+                <small id="author-input-help" className="hidden mt-2">
+                  {error ? error.message : "Helper"}
+                </small>
+              </div>
             </div>
           )}
         />

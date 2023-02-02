@@ -1,3 +1,4 @@
+import { Book } from "../book";
 import { Country } from "../country";
 
 export type Author = {
@@ -7,4 +8,5 @@ export type Author = {
   dateOfBirth: Date;
   dateOfDeath: Date;
   country: Country;
+  books: Book[];
 };
